@@ -12,3 +12,4 @@ setup.cfg
 dist
 *.egg-info/
 MANIFEST
+.vscode

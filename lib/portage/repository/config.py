@@ -859,7 +859,7 @@ class RepoConfigLoader:
             treemap.clear()
 
         repo_locations = frozenset(repo.location for repo in prepos.values())
-        for repo_location in ("var/db/repos/gentoo", "usr/portage"):
+        for repo_location in ("var/db/repos/meta", "usr/portage"):
             default_portdir = os.path.join(
                 os.sep, settings["EPREFIX"].lstrip(os.sep), repo_location
             )
@@ -923,7 +923,7 @@ class RepoConfigLoader:
 
                         # Ignore missing directory for 'gentoo' so that
                         # first sync with emerge-webrsync is possible.
-                        if repo.name != "gentoo":
+                        if repo.name != "meta":
                             del prepos[repo_name]
                             continue
 
@@ -1020,7 +1020,7 @@ class RepoConfigLoader:
                     "!!! SYNC setting found in make.conf.\n    "
                     "This setting is Deprecated and no longer used.  "
                     "Please ensure your 'sync-type' and 'sync-uri' are set correctly"
-                    " in /etc/portage/repos.conf/gentoo.conf\n"
+                    " in /etc/portage/repos.conf/meta.conf\n"
                 ),
                 noiselevel=-1,
             )
